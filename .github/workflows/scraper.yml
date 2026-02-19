@@ -1,5 +1,9 @@
 name: Truck Scraper
 
+on:
+  push:
+  pull_request:
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
