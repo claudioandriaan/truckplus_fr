@@ -1,0 +1,23 @@
+name: Truck Scraper
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run scraper
+      run: |
+        TODAY=$(date +%Y_%m_%d)
+        python truckplus_fr.py $TODAY --workers 8
